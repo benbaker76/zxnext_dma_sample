@@ -17,4 +17,4 @@ set GAMEDIR=%~dp0
 
 @echo on
 
-%CSPECT_HOME%\CSpect.exe -w4 -tv -zxnext -mmc=%GAMEDIR% %GAMEDIR%\zxnext_dma_sample.nex
+%CSPECT_HOME%\CSpect.exe -w3 -tv -zxnext -mmc=%GAMEDIR% %GAMEDIR%\zxnext_dma_sample.nex
