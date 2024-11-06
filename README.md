@@ -1,6 +1,6 @@
 # DMA Sample Demo
 
-Based on David Saphier (em00k's) [Multi Sample Engine](https://www.specnext.com/forum/viewtopic.php?f=16&t=1520)
+Based on David Saphier (em00k's) [Multi Sample Engine](https://github.com/em00k/zxnext-simple-dma)
 in z80 for the ZX Spectrum Next.
 
 ## How to Build
@@ -29,6 +29,7 @@ Sinclair ZX Spectrum emulator.
 
 ## Thanks
 
+- [em00k](https://github.com/em00k) for the original z80 asm demo this example is based
 - [Sefan Bylund](https://github.com/stefanbylund) for his z88dk examples on which these are based
 - [Michael Ware](https://www.rustypixels.uk/) for innumerable help with the Next hardware and z80 asm
 
