@@ -6,6 +6,7 @@
 typedef struct
 {
 	uint8_t disable;
+	uint8_t reset_dma;
 	uint8_t wr0;
 	void *source;
 	uint16_t length;
@@ -62,6 +63,7 @@ typedef struct
 dma_code_t dma_code_transfer =
 {
 	.disable = D_DISABLE_DMA,
+	.reset_dma = 0xc3,											// r6-reset dma
 	.wr0 = D_WR0 | D_WR0_X56_LEN | D_WR0_X34_A_START | D_WR0_TRANSFER_A_TO_B,
 	.source = 0,
 	.length = 0,
@@ -79,6 +81,7 @@ dma_code_t dma_code_transfer =
 dma_code_t dma_code_transfer_reversed =
 {
 	.disable = D_DISABLE_DMA,
+	.reset_dma = 0xc3,											// r6-reset dma
 	.wr0 = D_WR0 | D_WR0_X56_LEN | D_WR0_X34_A_START | D_WR0_TRANSFER_A_TO_B,
 	.source = 0,
 	.length = 0,
@@ -96,6 +99,7 @@ dma_code_t dma_code_transfer_reversed =
 dma_code_t dma_code_transfer_io =
 {
 	.disable = D_DISABLE_DMA,
+	.reset_dma = 0xc3,											// r6-reset dma
 	.wr0 = D_WR0 | D_WR0_X56_LEN | D_WR0_X34_A_START | D_WR0_TRANSFER_A_TO_B,
 	.source = 0,
 	.length = 0,
@@ -127,7 +131,7 @@ dma_code_fill_t dma_code_fill =
 
 dma_code_sample_t dma_code_sample_io =
 {
-	.disable_dma = D_DISABLE_DMA,								// r6-disable dm
+	.disable_dma = D_DISABLE_DMA,								// r6-disable dma
 	.reset_dma = 0xc3,											// r6-reset dma
 	.reset_port_a = 0xc7,										// r6-reset port a timing
 	.timing_a_b = 0xcb,											// r6-reset port b timing
@@ -180,7 +184,7 @@ void dma_transfer_sprite(void *source, uint16_t length)
 {
 	dma_code_transfer_io.source = source;
 	dma_code_transfer_io.length = length;
-	dma_code_transfer_io.dest = (void *)IO_SPRITE_PATTERN;
+	dma_code_transfer_io.dest = (void*)IO_SPRITE_PATTERN_DEST;
 	
 	z80_otir(&dma_code_transfer_io, IO_DMA_PORT, sizeof(dma_code_transfer_io));
 }
